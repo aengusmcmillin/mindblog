@@ -1,0 +1,2 @@
+class MapNodesController < ApplicationController
+end
