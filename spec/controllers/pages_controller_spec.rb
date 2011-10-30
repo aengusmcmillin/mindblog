@@ -3,6 +3,10 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
+  before(:each) do
+    @base_title = "Mind Blogging"
+  end
+
   describe "GET 'home'" do
     it "should be successful" do
       get 'home'
@@ -10,7 +14,8 @@ describe PagesController do
     end
     it "should have the right title" do
       visit '/pages/home'
-      page.should have_css("title", :text => "Mind Blogging | Home")
+      page.should have_css("title",
+                           :text => @base_title + " | Home")
     end
   end
 
@@ -22,7 +27,8 @@ describe PagesController do
 
     it "should have the right title" do
       visit '/pages/about'
-      page.should have_css("title", :text => "Mind Blogging | About")
+      page.should have_css("title",
+                           :text => @base_title + " | About")
     end
   end
 
@@ -34,7 +40,20 @@ describe PagesController do
 
     it "should have the right title" do
       visit '/pages/contact'
-      page.should have_css("title", :text => "Mind Blogging | Contact")
+      page.should have_css("title",
+                           :text => @base_title + " | Contact")
+    end
+  end
+
+  describe "GET 'help'" do
+    it "should be successful" do
+      get 'help'
+      response.should be_success
+    end
+    it "should have the right title" do
+      visit '/pages/help'
+      page.should have_css("title",
+                           :text => @base_title + " | Help")
     end
   end
 end
