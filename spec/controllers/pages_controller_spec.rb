@@ -13,7 +13,7 @@ describe PagesController do
       response.should be_success
     end
     it "should have the right title" do
-      visit '/pages/home'
+      visit root_path
       page.should have_css("title",
                            :text => @base_title + " | Home")
     end
@@ -26,7 +26,7 @@ describe PagesController do
     end
 
     it "should have the right title" do
-      visit '/pages/about'
+      visit about_path
       page.should have_css("title",
                            :text => @base_title + " | About")
     end
@@ -39,7 +39,7 @@ describe PagesController do
     end
 
     it "should have the right title" do
-      visit '/pages/contact'
+      visit contact_path
       page.should have_css("title",
                            :text => @base_title + " | Contact")
     end
@@ -51,7 +51,7 @@ describe PagesController do
       response.should be_success
     end
     it "should have the right title" do
-      visit '/pages/help'
+      visit help_path
       page.should have_css("title",
                            :text => @base_title + " | Help")
     end
